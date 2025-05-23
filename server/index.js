@@ -9,11 +9,13 @@ import mediaRoute from "./routes/media.route.js";
 import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 
+
 dotenv.config({});
 
 // call database connection here
 connectDB();
 const app = express();
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -33,6 +35,7 @@ app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/purchase", purchaseRoute);
 app.use("/api/v1/progress", courseProgressRoute);
  
+
  
 app.listen(PORT, () => {
     console.log(`Server listen at port ${PORT}`);

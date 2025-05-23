@@ -1,1 +1,53 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables
 .env
+
+# Binaries
+*.exe
+*.out
+*.app
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# Build output
+dist/
+build/
+
+# Coverage reports
+coverage/
+
+# Dependency directories
+jspm_packages/
+
+# Parcel-bundler cache
+.cache/
+
+# MongoDB database dumps
+dump/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.
