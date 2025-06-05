@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
+
 import Login from "./pages/Login";
 import HeroSection from "./pages/student/HeroSection";
 import MainLayout from "./layout/MainLayout";
@@ -15,7 +16,9 @@ import CreateLecture from "./pages/admin/lecture/CreateLecture";
 import EditLecture from "./pages/admin/lecture/EditLecture";
 import CourseDetail from "./pages/student/CourseDetail";
 import CourseProgress from "./pages/student/CourseProgress";
-import SearchPage from "./pages/student/SearchPage";
+import SearchPage from "./pages/admin/lecture/Lecture"; // ✅ Import lecture viewer component
+import Lecture from "./pages/admin/lecture/Lecture";
+
 import {
   AdminRoute,
   AuthenticatedUser,
@@ -24,13 +27,19 @@ import {
 import PurchaseCourseProtectedRoute from "./components/PurchaseCourseProtectedRoute";
 import { ThemeProvider } from "./components/ThemeProvider";
 
+import LandingPage from "./pages/LandingPage";
+
 const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <LandingPage />,
+  },
   {
     path: "/",
     element: <MainLayout />,
     children: [
       {
-        path: "/",
+        path: "home",
         element: (
           <>
             <HeroSection />
@@ -83,13 +92,21 @@ const appRouter = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <PurchaseCourseProtectedRoute>
-            <CourseProgress />
+              <CourseProgress />
             </PurchaseCourseProtectedRoute>
           </ProtectedRoute>
         ),
       },
-
-      // admin routes start from here
+      {
+        path: "course/:courseId/lecture/:lectureId/watch", // ✅ NEW LECTURE WATCH ROUTE
+        element: (
+          <ProtectedRoute>
+            <PurchaseCourseProtectedRoute>
+              <Lecture />
+            </PurchaseCourseProtectedRoute>
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "admin",
         element: (
@@ -132,7 +149,7 @@ function App() {
   return (
     <main>
       <ThemeProvider>
-      <RouterProvider router={appRouter} />
+        <RouterProvider router={appRouter} />
       </ThemeProvider>
     </main>
   );
